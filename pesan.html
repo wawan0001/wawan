@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PESAN-KEDAI RA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menghilangkan margin default */
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            padding-bottom: 4rem;
+            /* Tinggal jika ada konten di bawah */
+            background-color: #f9fafb;
+            /* Background body */
+            overflow-y: auto;
+            /* Mengizinkan scroll */
+        }
+
+        /* Tambahan efek bayangan untuk keseluruhan body */
+        .shadow-custom {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-green-300">
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-green-500 to-green-700 fixed top-0 left-0 w-full shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <h1 class="text-white text-2xl font-bold">Kedai RA</h1>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="./" class="text-white font-semibold hover:text-blue-400">Home</a></li>
+                <li><a href="./tentang.html" class="text-white font-semibold hover:text-blue-400">Tentang</a></li>
+                <li><a href="./pesan.html" class="text-white font-semibold hover:text-blue-400">Pesan</a></li>
+                <li><a href="./contact.html" class="text-white font-semibold hover:text-blue-400">Kontak</a></li>
+                <li><a href="./peta.html" class="text-white font-semibold hover:text-blue-400">Peta</a></li>
+            </ul>
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div class="hidden md:hidden bg-green-400" id="mobile-menu">
+            <ul class="flex flex-col space-y-2 py-3 px-4">
+                <li><a href="./" class="text-white font-semibold hover:text-blue-400">Home</a></li>
+                <li><a href="./tentang.html" class="text-white font-semibold hover:text-blue-400">Tentang</a></li>
+                <li><a href="./pesan.html" class="text-white font-semibold hover:text-blue-400">Pesan</a></li>
+                <li><a href="./contact.html" class="text-white font-semibold hover:text-blue-400">Kontak</a></li>
+                <li><a href="./peta.html" class="text-white font-semibold hover:text-blue-400">Peta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fungsi untuk mengirim pesan
+        const phoneNumber = '6285137026725'; // Ganti dengan nomor yang sesuai
+
+        function sendMessage(dish) {
+            const message = `Pesan Saya: ${dish}`;
+            console.log(`Opening WhatsApp with message: ${message}`); // Debugging log
+            window.open(`https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Menambahkan event listener ke semua tombol "Pesan Sekarang"
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll('button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const dishName = button.parentElement.querySelector('h3').innerText; // Mengambil nama hidangan
+                    console.log(`Button clicked: ${dishName}`); // Debugging log
+                    sendMessage(dishName); // Mengirim pesan
+                });
+            });
+        });
+    </script>
+
+    <!-- Section Menu Pemesanan -->
+    <section id="tentang" class="pt-16 pb-20 bg-green-300 flex items-center justify-center flex-grow">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-10">Menu Kami</h2>
+            <div class="flex flex-wrap -mx-4">
+
+                <!-- Menu 1 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./jagung goreng.jpeg" alt="Jagung Balado"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Jagung Balado</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 2 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./bakso bakar.jpeg" alt="Bakso Bakar"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Bakso Bakar</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 3 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./sosis bakar.jpeg" alt="Sosis Bakar"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Sosis Bakar</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 4 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./tahu bakar.jpeg" alt="Tahu Bakar/Goreng"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Tahu Bakar/Goreng</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 5 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./tela-tela.jpeg" alt="Tela-Tela"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Tela-Tela</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 6 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./crepes.jpeg" alt="Crepes"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Crepes</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Menu 7 -->
+                <div class="w-full md:w-1/3 px-4 mb-8">
+                    <div
+                        class="bg-white rounded-lg shadow-md overflow-hidden transition-transform transform hover:scale-105 shadow-custom">
+                        <img src="./pop icee.jpeg" alt="Pop Ice"
+                            class="w-full h-48 object-cover bg-gray-300 transition duration-500 ease-in-out transform hover:scale-110">
+                        <div class="p-4 text-center">
+                            <h3 class="text-lg font-semibold text-gray-700 mb-2">Pop Ice</h3>
+                            <button
+                                class="bg-green-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-green-600 transition duration-300">
+                                Pesan Sekarang
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-green-700 fixed bottom-0 w-full font-semibold text-white text-center py-4">
+        <p class="text-sm">© 2024 Kedai RA. Dwi Wahyu Asmara.</p>
+    </footer>
+
+</body>
+
+</html>

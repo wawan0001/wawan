@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEPAGE-KEDAI RA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            padding-bottom: 4rem;
+            /* Sesuaikan padding-bottom sesuai tinggi footer */
+            overflow-y: hidden;
+            /* Tambahkan baris ini untuk mencegah scrolling */
+        }
+    </style>
+</head>
+
+<body class="flex flex-col min-h-screen bg-green-300"> <!-- Tambahkan bg-green-300 pada body -->
+
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-green-500 to-green-700 fixed top-0 left-0 w-full shadow-lg z-50">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <h1 class="text-white text-2xl font-bold">Kedai RA</h1>
+            </div>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="./" class="text-white font-semibold hover:text-blue-400">Home</a></li>
+                <li><a href="./tentang.html" class="text-white font-semibold hover:text-blue-400">Tentang</a></li>
+                <li><a href="./pesan.html" class="text-white font-semibold hover:text-blue-400">Pesan</a></li>
+                <li><a href="./contact.html" class="text-white font-semibold hover:text-blue-400">Kontak</a></li>
+                <li><a href="./peta.html" class="text-white font-semibold hover:text-blue-400">Peta</a></li>
+            </ul>
+            <button class="md:hidden text-white focus:outline-none" id="menu-toggle">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div class="hidden md:hidden bg-green-400" id="mobile-menu">
+            <ul class="flex flex-col space-y-2 py-3 px-4">
+                <li><a href="./" class="text-white font-semibold hover:text-blue-400">Home</a></li>
+                <li><a href="./tentang.html" class="text-white font-semibold hover:text-blue-400">Tentang</a></li>
+                <li><a href="./pesan.html" class="text-white font-semibold hover:text-blue-400">Pesan</a></li>
+                <li><a href="./contact.html" class="text-white font-semibold hover:text-blue-400">Kontak</a></li>
+                <li><a href="./peta.html" class="text-white font-semibold hover:text-blue-400">Peta</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <script>
+        // Toggle Mobile Menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-cover bg-center h-screen" style="background-image: url('background-image.jpg');">
+        <div class="flex items-center justify-center h-full bg-gray-900 bg-opacity-50">
+            <h1 class="text-4xl md:text-5xl font-bold text-white text-center px-4 animate__animated animate__fadeIn">
+                <em>WELCOME TO <br><span class="text-green-500">KEDAI RA</span></em>
+            </h1>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="bg-gradient-to-r from-green-500 fixed bottom-0 w-full font-semibold text-white text-center py-4 z-50">
+        <p class="text-sm">© 2024 Kedai RA. Dwi Wahyu Asmara.</p>
+    </footer>
+
+</body>
+
+</html>
